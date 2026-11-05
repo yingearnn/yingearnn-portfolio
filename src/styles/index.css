@@ -1,0 +1,145 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   Design tokens — navy & sky blue identity
+   ------------------------------------------------------------------ */
+@theme {
+  --color-abyss: #04111f;
+  --color-navy-950: #071a2f; /* primary background */
+  --color-navy-900: #0b2340;
+  --color-navy-800: #102c4c; /* secondary background */
+  --color-navy-700: #163a62;
+  --color-ocean: #1e5280; /* supporting */
+  --color-sky: #7dd3fc; /* primary accent */
+  --color-sky-light: #bae6fd; /* secondary accent */
+  --color-ice: #e0f2fe; /* highlight */
+  --color-snow: #f8fafc; /* primary text */
+  --color-mist: #b6c9dc; /* secondary text */
+  --color-mist-dim: #8aa3bd;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --animate-gradient: gradient-shift 14s ease infinite;
+  --animate-float: float 9s ease-in-out infinite;
+  --animate-float-slow: float 13s ease-in-out infinite;
+  --animate-blink: blink 1s steps(1) infinite;
+
+  @keyframes gradient-shift {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, -18px, 0);
+    }
+  }
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background-color: var(--color-navy-950);
+    color: var(--color-snow);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: rgb(125 211 252 / 0.35);
+    color: var(--color-snow);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-sky);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  img {
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  /* Frosted navy glass panel */
+  .glass {
+    background: linear-gradient(160deg, rgb(16 44 76 / 0.72), rgb(11 35 64 / 0.55));
+    border: 1px solid rgb(125 211 252 / 0.14);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow:
+      0 1px 0 0 rgb(224 242 254 / 0.05) inset,
+      0 20px 40px -24px rgb(0 0 0 / 0.6);
+  }
+  .glass-hover {
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease,
+      transform 0.3s ease;
+  }
+  .glass-hover:hover {
+    border-color: rgb(125 211 252 / 0.38);
+    box-shadow:
+      0 1px 0 0 rgb(224 242 254 / 0.08) inset,
+      0 24px 50px -22px rgb(0 0 0 / 0.7),
+      0 0 0 1px rgb(125 211 252 / 0.08),
+      0 0 40px -10px rgb(125 211 252 / 0.22);
+  }
+  .text-gradient {
+    background: linear-gradient(100deg, var(--color-ice) 0%, var(--color-sky-light) 35%, var(--color-sky) 70%, var(--color-ice) 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .grid-backdrop {
+    background-image:
+      linear-gradient(rgb(125 211 252 / 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(125 211 252 / 0.045) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
