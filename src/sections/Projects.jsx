@@ -151,6 +151,42 @@ function FeaturedProject() {
           </div>
         </div>
 
+{/* UiPath RPA Video Demonstration */}
+<div className="mt-10 rounded-2xl border border-sky/20 bg-navy-950/50 p-5 sm:p-6">
+
+  <div className="mb-5">
+    <span className="mb-2 inline-block rounded-full border border-sky/30 bg-sky/10 px-3 py-1 text-xs font-semibold text-sky">
+      RPA Automation Demo
+    </span>
+
+    <h4 className="text-xl font-semibold text-snow sm:text-2xl">
+      {fp.demoTitle}
+    </h4>
+
+    <p className="mt-2 text-sm leading-relaxed text-mist">
+      {fp.demoDescription}
+    </p>
+  </div>
+
+  <video
+    controls
+    playsInline
+    preload="metadata"
+    className="aspect-video w-full rounded-xl border border-sky/20 bg-black"
+    aria-label="UiPath automated report generation demonstration"
+  >
+    <source src={fp.demoVideo} type="video/mp4" />
+    Your browser does not support HTML5 video playback.
+  </video>
+
+  <p className="mt-4 text-xs leading-relaxed text-mist">
+    Academic group project demonstrating how UiPath can be
+    integrated with Python data analysis to automate reporting
+    and Word document generation.
+  </p>
+
+</div>
+
         <dl className="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-4">
           {fp.stats.map((s) => (
             <div key={s.value} className="rounded-2xl border border-sky/10 bg-navy-950/40 p-4">

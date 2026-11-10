@@ -9,18 +9,32 @@ import { asset } from './profile'
 
 export const featuredProject = {
   id: 'sg-graduate-analysis',
-  title: 'Singapore Graduate Employment & Salary Analysis',
+  title:  'Singapore Employment Data Analytics & RPA Automation',
   module: 'Programming for Data Analytics',
   type: 'Group project · 4 members',
   question:
     "How does holding a university degree affect salary and employment stability, and how have these relationships changed relative to Singapore's national workforce between 2013 and 2020?",
   summary:
-    'A Python data analysis of four Singapore datasets — the Graduate Employment Survey plus three national workforce datasets from data.gov.sg — to compare fresh graduates and degree holders against the wider workforce.',
+   'A group project combining Python-based data analysis with ' +
+  'UiPath robotic process automation. We analysed Singapore ' +
+  'employment and salary trends using Pandas, NumPy, Matplotlib ' +
+  'and Seaborn, and developed an automated workflow to help ' +
+  'generate a Word report containing the analysis.',
+  demoVideo: asset('videos/uipath-demo.mp4'),
+
+demoTitle: 'UiPath RPA — Automated Report Generation',
+
+demoDescription:
+  'A demonstration of our UiPath automation workflow, ' +
+  'which combines Python-generated analysis with automated ' +
+  'report creation in Microsoft Word.',
+
   tech: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Jupyter Notebook', 'UiPath'],
   myRole: [
     'Built the national median income line chart and the national employment rate bar chart, along with their written analysis',
     'Worked on the UiPath workflow step that uses AI to analyse the generated charts',
     'Finalised the research question for the group',
+    'Contributed to the UiPath workflow for AI-assisted chart analysis and automated Word report generation',
   ],
   stats: [
     {
