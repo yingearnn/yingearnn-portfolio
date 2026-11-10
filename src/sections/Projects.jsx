@@ -4,6 +4,7 @@ import {
   ChartLine,
   ChevronDown,
   ExternalLink,
+  ShieldCheck,
   Lightbulb,
   ListChecks,
   Maximize2,
@@ -267,34 +268,61 @@ function ProjectCard({ project, delay }) {
         transition={{ type: 'spring', stiffness: 260, damping: 22 }}
         className="glass glass-hover group flex h-full flex-col overflow-hidden rounded-[1.5rem]"
       >
-        <div className="relative overflow-hidden border-b border-sky/10 bg-navy-950">
-          <img
-            src={current.src}
-            alt={current.alt}
-            width="1280"
-            height="800"
-            loading="lazy"
-            className="aspect-[16/10] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent" aria-hidden="true" />
-          <span className="absolute bottom-3 left-3 rounded-lg bg-navy-950/85 px-2.5 py-1 text-xs font-medium text-sky-light backdrop-blur">
-            {project.module}
-          </span>
-          {project.gallery.length > 1 && (
-            <div className="absolute right-3 bottom-3 flex gap-1.5">
-              {project.gallery.map((g, i) => (
-                <button
-                  key={g.src}
-                  type="button"
-                  onClick={() => setShot(i)}
-                  aria-label={`Show screenshot ${i + 1}: ${g.alt}`}
-                  aria-pressed={i === shot}
-                  className={`h-2 rounded-full transition-all ${i === shot ? 'w-6 bg-sky' : 'w-2 bg-ice/50 hover:bg-ice'}`}
-                />
-              ))}
-            </div>
-          )}
-        </div>
+        
+<div className="relative overflow-hidden border-b border-sky/10 bg-navy-950">
+
+  {current ? (
+    <img
+      src={current.src}
+      alt={current.alt}
+      width="1280"
+      height="800"
+      loading="lazy"
+      className="aspect-[16/10] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+    />
+  ) : (
+    <div className="flex aspect-[16/10] flex-col items-center justify-center gap-4 bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800">
+      <ShieldCheck
+        className="size-20 text-sky"
+        strokeWidth={1.2}
+        aria-hidden="true"
+      />
+      <span className="font-mono text-sm tracking-widest text-sky-light uppercase">
+        Secure Coding
+      </span>
+    </div>
+  )}
+
+  <div
+    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent"
+    aria-hidden="true"
+  />
+
+  <span className="absolute bottom-3 left-3 rounded-lg bg-navy-950/85 px-2.5 py-1 text-xs font-medium text-sky-light backdrop-blur">
+    {project.module}
+  </span>
+
+  {project.gallery.length > 1 && (
+    <div className="absolute right-3 bottom-3 flex gap-1.5">
+      {project.gallery.map((g, i) => (
+        <button
+          key={g.src}
+          type="button"
+          onClick={() => setShot(i)}
+          aria-label={`Show screenshot ${i + 1}: ${g.alt}`}
+          aria-pressed={i === shot}
+          className={`h-2 rounded-full transition-all ${
+            i === shot
+              ? 'w-6 bg-sky'
+              : 'w-2 bg-ice/50 hover:bg-ice'
+          }`}
+        />
+      ))}
+    </div>
+  )}
+
+</div>
+
 
         <div className="flex flex-1 flex-col p-5 sm:p-6">
           <p className="font-mono text-[11px] tracking-wider text-sky uppercase">{project.accent}</p>
@@ -346,16 +374,42 @@ function ProjectCard({ project, delay }) {
           </AnimatePresence>
 
           <div className="mt-auto pt-6">
-            <div className="flex flex-wrap gap-3">
-              <Button href={project.demo} target="_blank" rel="noopener noreferrer" variant="primary" className="flex-1 sm:flex-none">
-                <ExternalLink className="size-4" aria-hidden="true" /> Live demo
-              </Button>
-              <Button href={project.repo} target="_blank" rel="noopener noreferrer" variant="secondary" className="flex-1 sm:flex-none">
-                <GitHubIcon className="size-4" /> Source code
-              </Button>
-            </div>
-            <p className="mt-3 text-xs leading-relaxed text-mist-dim">{project.demoNote}</p>
-          </div>
+  {(project.demo || project.repo) && (
+    <div className="flex flex-wrap gap-3">
+      {project.demo && (
+        <Button
+          href={project.demo}
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="primary"
+          className="flex-1 sm:flex-none"
+        >
+          <ExternalLink className="size-4" aria-hidden="true" />
+          Live demo
+        </Button>
+      )}
+
+      {project.repo && (
+        <Button
+          href={project.repo}
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="secondary"
+          className="flex-1 sm:flex-none"
+        >
+          <GitHubIcon className="size-4" />
+          Source code
+        </Button>
+      )}
+    </div>
+  )}
+
+  {project.demoNote && (
+    <p className="mt-3 text-xs leading-relaxed text-mist-dim">
+      {project.demoNote}
+    </p>
+  )}
+</div>
         </div>
       </motion.article>
     </Reveal>
@@ -366,8 +420,10 @@ export default function Projects() {
   return (
     <Section id="projects" tone="deep">
       <SectionHeading index="02" eyebrow="Academic projects" title="Things I've built and analysed" highlight="built and analysed">
-        Three school projects across data analytics, back-end development and database systems — each one a different
-        way of turning a brief into something that works.
+       Four academic projects exploring data analytics, automation,
+        secure coding, back-end development and database systems.
+       Each project has helped me strengthen my technical knowledge
+        through practical learning.
       </SectionHeading>
 
       <FeaturedProject />

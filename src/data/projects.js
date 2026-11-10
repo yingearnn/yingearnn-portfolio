@@ -136,6 +136,101 @@ demoDescription:
 }
 
 export const projects = [
+  
+  {
+    id: 'secure-coding',
+    title: 'Web Application Security & Vulnerability Analysis',
+    module: 'Secure Coding',
+    accent: 'Pair Assignment · OWASP Security',
+    image: null,
+    gallery: [],
+    imageAlt: 'Secure Coding vulnerability analysis',
+
+    summary:
+      'A pair assignment focused on identifying, demonstrating ' +
+      'and addressing security vulnerabilities in a web application. ' +
+      'I worked on SQL Injection, Broken Access Control, and ' +
+      'Security Logging and Alerting Failures through code review, ' +
+      'manual testing and documenting secure coding solutions.',
+
+    tech: [
+      'JavaScript',
+      'Node.js',
+      'SQL',
+      'JWT',
+      'Postman',
+      'OWASP',
+      'Code Review',
+    ],
+
+    features: [
+      'SQL Injection: Investigated vulnerable database queries ' +
+        'and demonstrated how unsafe SQL concatenation could ' +
+        'expose database information.',
+
+      'SQL Injection Prevention: Applied parameterised queries ' +
+        'to ensure user input is treated as data rather than SQL.',
+
+      'Broken Access Control: Investigated missing authentication ' +
+        'and ownership checks that allowed unauthorised ' +
+        'modification or deletion of listings.',
+
+      'Access Control Improvements: Documented authentication ' +
+        'middleware and ownership verification for protected routes.',
+
+      'Security Logging: Investigated JWT tokens exposed in ' +
+        'server logs and insufficient logging of failed logins.',
+
+      'Security Testing: Used manual testing, code review and ' +
+        'Postman to examine vulnerabilities and proposed fixes.',
+
+      'Presentation: Presented SQL Injection, explaining the ' +
+        'vulnerability, demonstration, and parameterised-query fix.',
+    ],
+
+    learned: [
+      'How insecure SQL query construction can expose sensitive data.',
+
+      'Why parameterised queries are important for SQL Injection prevention.',
+
+      'How authentication and authorisation differ in web applications.',
+
+      'Why sensitive information such as JWT tokens should not be logged.',
+
+      'How to investigate vulnerabilities through code review and testing.',
+
+      'How to communicate technical security concepts during a presentation.',
+    ],
+
+    challenges: [
+      'Understanding how SQL Injection changes a database query ' +
+        'and how parameterisation prevents this.',
+
+      'Identifying missing authentication and ownership checks ' +
+        'in different application endpoints.',
+
+      'Understanding how logging practices affect application security.',
+    ],
+
+    next: [
+      'Explore automated security testing tools.',
+
+      'Learn more about OWASP Top 10 vulnerabilities.',
+
+      'Practise secure API development and authorisation testing.',
+
+      'Improve my understanding of secure coding practices ' +
+        'through future development projects.',
+    ],
+
+    demo: null,
+    repo: null,
+
+    demoNote:
+      'Academic pair project. Vulnerabilities were investigated ' +
+      'in a controlled coursework environment.',
+  },
+
   {
     id: 'grow-a-garden',
     title: 'Grow a Garden — Wellness Garden Game',
